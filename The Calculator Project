@@ -1,0 +1,61 @@
+def multiply(a, b):
+    #multiply a and b
+    return(a*b)
+
+
+def add(a, b):
+    # add a and b
+    return(a+b)
+
+
+def subtract(a, b):
+    # subtract b from a
+    return(a-b)
+
+
+def divide(a, b):
+    # divide a/b
+    return(a/b)
+
+# Add four functions into dictionary as values. Keys: "*", "/", "+", "-"
+operations = {
+    "*": multiply,
+    "/": divide,
+    "+": add,
+    "-": subtract,
+}
+
+# Use the dictionary operations to perform the calculations. Multiply 4*8 using the operations
+# print(operations["*"](4,8))
+
+# Complete the project by yourself...
+# 1. ask user to input int
+# 2. ask user to select operation
+# 3. ask user to input int
+# 4. ask user if they want to continue y->continue, n->exit
+# 5. ask user to select operation 
+# 6. ask user to input int, with previous value, operate.
+# 7. ask user if they want to continue. repeat step 5-7
+
+def continuous_calculation():
+    continue_or_not = True
+    a = int(input("Enter integer number: "))    #int
+
+    while continue_or_not:
+        for symbol in operations:
+            print(symbol)
+        operation_select = input("which operation do you want to perform?: ")   #str
+        b = int(input("Enter integer number: "))    #int
+        result = operations[operation_select](a,b)
+        print(f"{a} {operation_select} {b} = {result}")
+
+        keep_going=input("Do you want to continue? Y or N: ").lower()
+
+        if keep_going == "n":
+            continue_or_not = False
+            print("\n"*20)
+            return result
+        else:
+            a = result
+
+continuous_calculation()
